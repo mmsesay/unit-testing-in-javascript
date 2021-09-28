@@ -4,10 +4,10 @@
   "description": "This is an exercise to pratice on implementing unittest using jest in javascript",
   "main": "index.js",
   "directories": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
