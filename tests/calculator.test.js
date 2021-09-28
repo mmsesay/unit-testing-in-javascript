@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const { calculator } = require('../js/calculator.js');
 
 const valuesObject = {
   value1: 5,
@@ -10,138 +10,118 @@ const valuesObject = {
 
 describe('add', () => {
   test('to sum up with numbers', () => {
-    function testFunc(num1, num2) {
-      return num1 + num2;
-    }
-
     expect(
-      testFunc(valuesObject.value1, valuesObject.value2),
+      calculator.add(valuesObject.value1, valuesObject.value2),
     ).toEqual(25);
   });
 
   test('to sum up with floating point numbers', () => {
-    function testFunc(num1, num2) {
-      return num1 + num2;
-    }
-
     expect(
-      testFunc(valuesObject.value2, valuesObject.valueFloat),
+      calculator.add(valuesObject.value2, valuesObject.valueFloat),
     ).toEqual(32.5);
   });
 
   test('throw error is string value (s) are passed as arguments', () => {
-    const testFunc = (num1, num2) => {
-      if (_.isString(num1) || _.isString(num2)) {
-        throw new Error('Addition operation cannot work on strings');
-      } else {
-        return num1 + num2;
-      }
-    };
-
-    const runner = () => {
-      testFunc(valuesObject.value1, valuesObject.valueString);
+    const response = () => {
+      calculator.add(valuesObject.value1, valuesObject.valueString);
     };
 
     expect(
-      runner,
+      response,
     ).toThrowError('Addition operation cannot work on strings');
   });
 });
 
 describe('subtract', () => {
   test('subtracting bigger value from a smaller value', () => {
-    function testFunc(num1, num2) {
-      return num1 - num2;
-    }
+    const response = calculator.substract(valuesObject.value1, valuesObject.value2);
 
     expect(
-      testFunc(valuesObject.value1, valuesObject.value2),
+      response,
     ).toEqual(-15);
   });
 
   test('subtracting smaller value from a bigger value', () => {
-    function testFunc(num1, num2) {
-      return num1 - num2;
-    }
+    const response = calculator.substract(valuesObject.value2, valuesObject.value1);
 
     expect(
-      testFunc(valuesObject.value2, valuesObject.value1),
+      response,
     ).toEqual(15);
   });
 
   test('subtracting integer from floating pointer number', () => {
-    function testFunc(num1, num2) {
-      return num1 - num2;
-    }
+    const response = calculator.substract(valuesObject.valueFloat, valuesObject.value2);
 
     expect(
-      testFunc(valuesObject.valueFloat, valuesObject.value2),
+      response,
     ).toEqual(-7.5);
   });
 
   test('throw error is string value (s) are passed as arguments', () => {
-    const testFunc = (num1, num2) => {
-      if (_.isString(num1) || _.isString(num2)) {
-        throw new Error('Subtraction operation cannot work on strings');
-      } else {
-        return num1 - num2;
-      }
-    };
-
-    const runner = () => {
-      testFunc(valuesObject.value1, valuesObject.valueString);
+    const response = () => {
+      calculator.substract(valuesObject.value1, valuesObject.valueString);
     };
 
     expect(
-      runner,
+      response,
     ).toThrowError('Subtraction operation cannot work on strings');
   });
 });
 
 describe('divide', () => {
   test('to divide between integers', () => {
-    function testFunc(num1, num2) {
-      return num1 / num2;
-    }
+    const response = calculator.divide(valuesObject.value1, valuesObject.value2);
 
     expect(
-      testFunc(valuesObject.value1, valuesObject.value2),
+      response,
     ).toEqual(0.25);
   });
 
   test('throw error is string value (s) are passed as arguments', () => {
-    const testFunc = (num1, num2) => {
-      if (_.isString(num1) || _.isString(num2)) {
-        throw new Error('Division operation cannot work on strings');
-      } else {
-        return num1 / num2;
-      }
-    };
-
-    const runner = () => {
-      testFunc(valuesObject.value1, valuesObject.valueString);
+    const response = () => {
+      calculator.divide(valuesObject.value1, valuesObject.valueString);
     };
 
     expect(
-      runner,
+      response,
     ).toThrowError('Division operation cannot work on strings');
   });
 
   test('throw zero divisible error', () => {
-    const testFunc = (num1, num2) => {
-      if (num1 === 0 || num2 === 0) {
-        throw new Error('Zero division error');
-      } else {
-        return num1 / num2;
-      }
-    };
-
-    const runner = () => {
-      testFunc(valuesObject.value1, valuesObject.valueZero);
+    const response = () => {
+      calculator.divide(valuesObject.value1, valuesObject.valueZero);
     };
 
     expect(
-      runner,
+      response,
     ).toThrowError('Zero division error');
+  });
+});
+
+describe('multiply', () => {
+  test('multiplying integer values', () => {
+    const response = calculator.multiply(valuesObject.value1, valuesObject.value2);
+
+    expect(
+      response,
+    ).toEqual(100);
+  });
+
+  test('multiplying integer by floating pointer numbers', () => {
+    const response = calculator.multiply(valuesObject.valueFloat, valuesObject.value2);
+
+    expect(
+      response,
+    ).toEqual(250);
+  });
+
+  test('throw error is string value (s) are passed as arguments', () => {
+    const response = () => {
+      calculator.multiply(valuesObject.value1, valuesObject.valueString);
+    };
+
+    expect(
+      response,
+    ).toThrowError('Multiplication operation cannot work on strings');
   });
 });
