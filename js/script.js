@@ -10,4 +10,6 @@ const stringLength = (string) => {
   return result;
 };
 
-module.exports = stringLength;
+const reverseString = (string) => [...string].reverse().join('').toLowerCase();
+
+module.exports = { stringLength, reverseString };
