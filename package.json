@@ -1,0 +1,30 @@
+{
+  "name": "unit-testing-in-javascript",
+  "version": "1.0.0",
+  "description": "This is an exercise to pratice on implementing unittest using jest in javascript",
+  "main": "index.js",
+  "directories": {
+    "test": "jest --coverage"
+  },
+  "scripts": {
+    "test": "jest --coverage --testPathPattern=tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmsesay/unit-testing-in-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmsesay/unit-testing-in-javascript/issues"
+  },
+  "homepage": "https://github.com/mmsesay/unit-testing-in-javascript#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "jest": "^27.2.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
