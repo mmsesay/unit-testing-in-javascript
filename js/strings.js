@@ -12,4 +12,11 @@ const stringLength = (string) => {
 
 const reverseString = (string) => [...string].reverse().join('').toLowerCase();
 
-module.exports = { stringLength, reverseString };
+const capitaliseString = (string) => {
+  if (!_.isString(string)) {
+    throw new Error('Capitalization only works on strings not numbers');
+  }
+  return string[0].toUpperCase() + string.substr(1);
+};
+
+module.exports = { stringLength, reverseString, capitaliseString };
